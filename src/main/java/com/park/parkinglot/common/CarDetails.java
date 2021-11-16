@@ -29,4 +29,12 @@ public class CarDetails implements java.io.Serializable {
     public String getLicensePlate() {
         return licensePlate;
     } 
+
+    public String getParkingSpot() {
+        return parkingSpot;
+    }
+
+    public String getUsername() {
+        return username;
+    }
 }

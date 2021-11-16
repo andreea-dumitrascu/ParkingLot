@@ -8,7 +8,7 @@ package com.park.parkinglot.common;
  *
  * @author Rori
  */
-public class UserDetails {
+public class UserDetails implements java.io.Serializable {
     
     private Integer id;
     
@@ -28,4 +28,18 @@ public class UserDetails {
     public Integer getId() {
         return id;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+    
+    
 }

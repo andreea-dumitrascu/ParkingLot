@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cars
-    Created on : Nov 2, 2021, 11:00:44 AM
+    Document   : users
+    Created on : Nov 16, 2021, 12:19:54 AM
     Author     : Rori
 --%>
 
@@ -9,20 +9,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<t:pageTemplate pageTitle="Cars">
-    <h1>Cars</h1>
-    <c:forEach var="car" items="${cars}" varStatus="status">
+<t:pageTemplate pageTitle="Users">
+    <h1>Users</h1>
+    <c:forEach var="user" items="${users}" varStatus="status">
         <div class="row">
             <div class="col-md-4">
-                ${car.licensePlate}
+                ${user.username}
             </div>
             <div class="col-md-4">
-                ${car.parkingSpot}
+                ${user.email}
             </div>
             <div class="col-md-4">
-                ${car.username}
+                ${user.position}
             </div>
         </div>
     </c:forEach>
-    <h5>Free parking spots: ${numberOfFreeParkingSpots}</h5>
 </t:pageTemplate>
