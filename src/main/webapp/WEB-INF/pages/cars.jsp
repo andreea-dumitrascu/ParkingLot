@@ -11,6 +11,7 @@
 
 <t:pageTemplate pageTitle="Cars">
     <h1>Cars</h1>
+    <button type="button" class="btn btn-primary">Add Cars</button>
     <c:forEach var="car" items="${cars}" varStatus="status">
         <div class="row">
             <div class="col-md-4">
