@@ -91,5 +91,7 @@ public class Car implements Serializable {
     public String toString() {
         return "com.park.parkinglot.entity.Car[ id=" + id + " ]";
     }
+
+    
     
 }

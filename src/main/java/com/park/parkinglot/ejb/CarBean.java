@@ -53,6 +53,12 @@ public class CarBean {
         
         em.persist(car);
     }
+    
+    public CarDetails findById(Integer carId){
+        Car car = em.find(Car.class, carId);
+        return new CarDetails(car.getId(), car.getLicensePlate(), car.getParkingSpot(), car.getUser().getUsername());
+    }
+    
     public List<CarDetails> getAllCars() {
     LOG.info("getAllCars");
     try {
@@ -65,4 +71,18 @@ public class CarBean {
 }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    public void updateCar(int carId, String licensePlate, String parkingSpot, int userId) {
+        LOG.info("updateCar");
+        Car car = em.find(Car.class, carId);
+        car.setLicensePlate(licensePlate);
+        car.setParkingSpot(parkingSpot);
+        
+        User oldUser = car.getUser();
+        oldUser.getCars().remove(car);
+        
+        User user = em.find(User.class, userId);
+        user.getCars().add(car);
+        car.setUser(user);
+    }
 }
