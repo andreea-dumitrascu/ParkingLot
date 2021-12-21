@@ -11,6 +11,7 @@
 
 <t:pageTemplate pageTitle="Users">
     <h1>Users</h1>
+        <a class="btn btn-primary btn-lg" href ="${pageContext.request.contextPath}/AddUser" role="button">Add User</a>
     <c:forEach var="user" items="${users}" varStatus="status">
         <div class="row">
             <div class="col-md-4">
