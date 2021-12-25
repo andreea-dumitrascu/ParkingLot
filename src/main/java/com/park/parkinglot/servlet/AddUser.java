@@ -14,10 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.park.parkinglot.util.PasswordUtil;
 import javax.inject.Inject;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 /**
  *
  * @author Rori
  */
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = { "AdminRole" }))
 @WebServlet(name = "AddUser", urlPatterns = {"/AddUser"})
 public class AddUser extends HttpServlet {
 
