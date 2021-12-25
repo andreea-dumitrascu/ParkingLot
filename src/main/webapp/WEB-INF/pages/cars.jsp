@@ -12,7 +12,7 @@
 <t:pageTemplate pageTitle="Cars">
     <h1>Cars</h1>
     <form method="POST" action="${pageContext.request.contextPath}/Cars">
-        <a role="button" class="btn btn-primary" href="${pageContext.request.contextPath}/AddCars">Add Cars</a>
+        <a role="button" class="btn btn-primary" href="${pageContext.request.contextPath}/Cars/Create">Add Cars</a>
         <button class="btn btn-danger" type="submit">Delete Cars</button>
         <c:forEach var="car" items="${cars}" varStatus="status">
             <div class="row">
@@ -35,7 +35,7 @@
                     <a role="button" class="btn btn-secondary" href="${pageContext.request.contextPath}/Cars/AddPhoto?id=${car.id}">Add Photo</a>
                 </div>
                 <div class="col-md-2">
-                    <a role="button" class="btn btn-secondary" href="${pageContext.request.contextPath}/EditCars?id=${car.id}">Edit Car</a>
+                    <a role="button" class="btn btn-secondary" href="${pageContext.request.contextPath}/Cars/Update?id=${car.id}">Edit Car</a>
                 </div>
             </div>
         </c:forEach>
