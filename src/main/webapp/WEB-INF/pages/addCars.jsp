@@ -10,7 +10,7 @@
 
 <t:pageTemplate pageTitle="AddCars">
     <h1>Add Cars Page</h1>
-    <form class="needs-validation" novalidate method="POST" action="${pageContext.request.contextPath}/Cars/Create">
+    <form class="needs-validation" novalidate method="POST" action="${pageContext.request.contextPath}/AddCars">
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="licensePlate">License plate</label>

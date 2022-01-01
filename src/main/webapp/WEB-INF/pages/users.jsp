@@ -13,7 +13,7 @@
     <h1>Users</h1>
     <form method="POST" action="${pageContext.request.contextPath}/Users">
         <c:if test="${pageContext.request.isUserInRole('AdminRole')}">
-            <a class="btn btn-primary btn-lg" href ="${pageContext.request.contextPath}/Users/Create" role="button">Add User</a>
+            <a class="btn btn-primary btn-lg" href ="${pageContext.request.contextPath}/AddUser" role="button">Add User</a>
             <button class="btn btn-secondary" type="submit">Invoice</button>
         </c:if>
         <c:forEach var="user" items="${users}" varStatus="status">

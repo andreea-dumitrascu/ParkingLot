@@ -10,7 +10,7 @@
 
 <t:pageTemplate pageTitle="AddUsers">
     <h1>Add Users Page</h1>
-    <form class="needs-validation" novalidate method="POST" action="${pageContext.request.contextPath}/Users/Create">
+    <form class="needs-validation" novalidate method="POST" action="${pageContext.request.contextPath}/AddUser">
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="username">username</label>

@@ -4,6 +4,7 @@
  */
 package com.park.parkinglot.servlet;
 
+import com.park.parkinglot.ejb.UserBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,14 +12,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import com.park.parkinglot.util.PasswordUtil;
+import javax.inject.Inject;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 /**
  *
  * @author Rori
  */
-@WebServlet(name = "Logout", urlPatterns = {"/Logout"})
-public class Logout extends HttpServlet {
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = { "AdminRole" }))
+@WebServlet(name = "AddUser", urlPatterns = {"/AddUser"})
+public class AddUser extends HttpServlet {
 
+    @Inject 
+    UserBean userBean;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,10 +43,10 @@ public class Logout extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Logout</title>");            
+            out.println("<title>Servlet AddUser</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Logout at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddUser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,10 +64,7 @@ public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.logout();
-        request.getSession().invalidate();
-        response.sendRedirect(request.getContextPath());
-       //processRequest(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/addUser.jsp").forward(request, response);
     }
 
     /**
@@ -74,7 +78,16 @@ public class Logout extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String position = request.getParameter("position");
+        
+        String passwordSha256 = PasswordUtil.convertToSha256(password);
+        
+        userBean.createUser(username, email, passwordSha256, position);
+        
+        response.sendRedirect(request.getContextPath() + "/Users");
     }
 
     /**
